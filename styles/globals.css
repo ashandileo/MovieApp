@@ -17,3 +17,28 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.container {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.background-image {
+  position: relative;
+  background-image: url("../public/img/wallpaper.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.background-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
