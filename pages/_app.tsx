@@ -1,7 +1,23 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;700&family=Roboto:wght@300;400;500&display=swap"
+          rel="stylesheet"
+        />
+
+        <title>Ashandi's XXI</title>
+
+        <Component {...pageProps} />
+      </Head>
+    </>
+  );
 }
-export default MyApp
+export default MyApp;
