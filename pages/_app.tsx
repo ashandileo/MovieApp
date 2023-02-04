@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import Header from "../components/Header";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -15,6 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
         <title>Ashandi's XXI</title>
 
+        <Header />
         <Component {...pageProps} />
       </Head>
     </>
