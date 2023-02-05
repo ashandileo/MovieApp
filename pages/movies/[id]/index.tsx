@@ -1,7 +1,10 @@
 import React from "react";
+import { pdf } from "@react-pdf/renderer";
+import { saveAs } from "file-saver";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useGetMovieDetail } from "../../../hooks/movies";
 import { IGenres } from "../../../types/MovieTypes";
+import PDFReport from "../../../components/PDFReport";
 
 interface IMovieDetail {
   movieId: number;
@@ -11,6 +14,14 @@ const MovieDetail = ({ movieId }: IMovieDetail) => {
   const { data } = useGetMovieDetail(movieId);
 
   const movieDetail = data?.data;
+
+  const downloadPDF = async () => {
+    const doc = <PDFReport movieDetail={movieDetail} />;
+    const asPdf = pdf();
+    asPdf.updateContainer(doc);
+    const blob = await asPdf.toBlob();
+    saveAs(blob, "document.pdf");
+  };
 
   return (
     <div className="container pt-[100px] text-white pb-[40px]">
@@ -70,8 +81,11 @@ const MovieDetail = ({ movieId }: IMovieDetail) => {
         <div className="absolute w-[60%] left-[370px] mt-[12px]">
           <p className="text-[22px] font-semibold">Overview</p>
           <p>{movieDetail?.overview}</p>
-          <button className="rounded-full bg-[#64B6D0] hover:bg-[#0da0cf] duration-150 py-[8px] px-[16px] font-bold mt-[16px]">
-            Download PDF
+          <button
+            className="rounded-full bg-[#64B6D0] hover:bg-[#0da0cf] duration-150 py-[8px] px-[16px] font-bold mt-[16px]"
+            onClick={downloadPDF}
+          >
+            Print
           </button>
         </div>
       </div>
