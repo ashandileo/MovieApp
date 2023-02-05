@@ -5,7 +5,7 @@ import { useGetPopularMovies } from "./../hooks/movies";
 export default function Home() {
   const { data } = useGetPopularMovies();
 
-  const popularMovies = data?.data?.results || [];
+  const movies = data?.data?.results || [];
 
   return (
     <div className="background-image">
@@ -41,7 +41,7 @@ export default function Home() {
             className="w-full h-[280px] mt-[16px] flex items-center grid grid-cols-6 gap-4 py-[8px] px-[16px] rounded-[12px]"
             style={{ backgroundColor: "rgba(103, 101, 113, 0.34)" }}
           >
-            {popularMovies?.slice(0, 6)?.map((movie: IMovie) => (
+            {movies?.slice(0, 6)?.map((movie: IMovie) => (
               <CardMovie key={movie?.id} movie={movie} />
             ))}
           </div>

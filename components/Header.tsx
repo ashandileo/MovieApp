@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
     <header
-      className={`py-[24px] w-full fixed z-[5] ${
+      className={`py-[24px] w-full fixed z-[100] ${
         router.route === "/" ? "" : "bg-[#192026] shadow-lg"
       }`}
     >
