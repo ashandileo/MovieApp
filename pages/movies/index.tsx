@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useGetTopRatedMovies } from "../../hooks/movies";
 import { IMovie } from "../../types/MovieTypes";
 import CardMovie from "../../components/CardMovie";
+import Link from "next/link";
 
 import { useIntersectionObserver } from "react-intersection-observer-hook";
 
@@ -28,7 +29,21 @@ const Movies = () => {
 
       <div className="w-full mt-[16px] flex items-center grid gap-[12px] grid-template-columns">
         {movies?.map((movie: IMovie) => (
-          <CardMovie key={movie?.id} movie={movie} />
+          <Link
+            href={`/movies/${movie?.id}`}
+            as={`/movies/${movie?.id}`}
+            key={movie?.id}
+          >
+            <a>
+              <CardMovie
+                title={movie?.title}
+                image={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
+                releaseDate={movie?.release_date}
+                voteAverage={movie?.vote_average}
+                description={movie?.overview}
+              />
+            </a>
+          </Link>
         ))}
         {movies?.length > 0 && <div ref={ref} />}
       </div>

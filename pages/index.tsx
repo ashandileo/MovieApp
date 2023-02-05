@@ -1,4 +1,5 @@
 import CardMovie from "../components/CardMovie";
+import Link from "next/link";
 import { IMovie } from "../types/MovieTypes";
 import { useGetPopularMovies } from "./../hooks/movies";
 
@@ -42,7 +43,21 @@ export default function Home() {
             style={{ backgroundColor: "rgba(103, 101, 113, 0.34)" }}
           >
             {movies?.slice(0, 5)?.map((movie: IMovie) => (
-              <CardMovie key={movie?.id} movie={movie} />
+              <Link
+                href={`/movies/${movie?.id}`}
+                as={`/movies/${movie?.id}`}
+                key={movie?.id}
+              >
+                <a>
+                  <CardMovie
+                    title={movie?.title}
+                    image={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
+                    releaseDate={movie?.release_date}
+                    voteAverage={movie?.vote_average}
+                    description={movie?.overview}
+                  />
+                </a>
+              </Link>
             ))}
           </div>
         </div>

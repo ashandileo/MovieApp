@@ -1,3 +1,8 @@
+export interface IGenres {
+  id: number;
+  name: string;
+}
+
 export interface IMovie {
   id: number;
   adult: boolean;
@@ -12,4 +17,5 @@ export interface IMovie {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  genres?: IGenres[];
 }
