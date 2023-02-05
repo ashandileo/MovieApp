@@ -47,9 +47,15 @@ export default function Home() {
             <img src="/img/outlined-star.png" />
           </div>
           <div className="flex items-center mt-[24px]">
-            <button className="rounded-full bg-[#64B6D0] hover:bg-[#0da0cf] duration-150 py-[8px] px-[16px] font-bold">
-              See Detail
-            </button>
+            <Link
+              href={`/movies/${movieHero?.data?.id}`}
+              as={`/movies/${movieHero?.data?.id}`}
+              key={movieHero?.data?.id}
+            >
+              <a className="rounded-full bg-[#64B6D0] hover:bg-[#0da0cf] duration-150 py-[8px] px-[16px] font-bold">
+                See Detail
+              </a>
+            </Link>
           </div>
         </div>
 
