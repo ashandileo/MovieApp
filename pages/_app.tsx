@@ -8,7 +8,18 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [queryClient] = useState(() => new QueryClient());
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            refetchOnWindowFocus: false,
+            cacheTime: 5 * 60 * 1000,
+            staleTime: 5 * 60 * 1000,
+          },
+        },
+      })
+  );
 
   return (
     <>
