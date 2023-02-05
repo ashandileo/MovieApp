@@ -1,11 +1,11 @@
+import CardMovie from "../components/CardMovie";
+import { IMovie } from "../types/MovieTypes";
 import { useGetPopularMovies } from "./../hooks/movies";
 
 export default function Home() {
   const { data } = useGetPopularMovies();
 
-  const popularMovies = data?.data?.results?.splice(0, 6) || [];
-
-  console.log("popularMovies", popularMovies);
+  const popularMovies = data?.data?.results || [];
 
   return (
     <div className="background-image">
@@ -41,64 +41,8 @@ export default function Home() {
             className="w-full h-[280px] mt-[16px] flex items-center grid grid-cols-6 gap-4 py-[8px] px-[16px] rounded-[12px]"
             style={{ backgroundColor: "rgba(103, 101, 113, 0.34)" }}
           >
-            {popularMovies?.map((movie: any) => (
-              <div
-                className="w-full h-full rounded-[12px] overflow-hidden relative cursor-pointer popular-movies border border-white"
-                key={movie?.id}
-              >
-                <div
-                  className="absolute left-[0px] right-[0px] bottom-[0px] h-[65%]"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, rgba(29, 29, 29, 0) 0%, #0F1E29 100%)",
-                  }}
-                />
-                <img
-                  src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
-                  className="w-full h-full object-cover"
-                />
-                <div className="content absolute z-[2] bottom-[12px] px-[12px]">
-                  <p className="text-[18px] font-semibold">{movie?.title}</p>
-                  <div className="flex items-center justify-between mt-[2px]">
-                    <p className="text-[12px]">{movie?.release_date}</p>
-                    <div className="flex items-center">
-                      <p className="text-[12px] mr-[4px]">
-                        {movie?.vote_average}
-                      </p>
-                      <img
-                        src="/img/filled-star.png"
-                        className="w-[12px] h-[12px]"
-                      />
-                    </div>
-                  </div>
-                  <div className="w-full line-clamp-3 mt-[8px]">
-                    <p className="text-[12px]">{movie?.overview}</p>
-                  </div>
-
-                  {/* <div className="flex items-center gap-[3px]">
-                    <img
-                      src="/img/filled-star.png"
-                      className="w-[12px] h-[12px]"
-                    />
-                    <img
-                      src="/img/filled-star.png"
-                      className="w-[12px] h-[12px]"
-                    />
-                    <img
-                      src="/img/filled-star.png"
-                      className="w-[12px] h-[12px]"
-                    />
-                    <img
-                      src="/img/filled-star.png"
-                      className="w-[12px] h-[12px]"
-                    />
-                    <img
-                      src="/img/outlined-star.png"
-                      className="w-[12px] h-[12px]"
-                    />
-                  </div> */}
-                </div>
-              </div>
+            {popularMovies?.slice(0, 6)?.map((movie: IMovie) => (
+              <CardMovie key={movie?.id} movie={movie} />
             ))}
           </div>
         </div>
