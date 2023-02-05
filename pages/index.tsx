@@ -38,10 +38,10 @@ export default function Home() {
         <div className="mt-[16px] text-white">
           <p className="text-[20px] font-bold">Popular Movies</p>
           <div
-            className="w-full h-[280px] mt-[16px] flex items-center grid grid-cols-6 gap-4 py-[8px] px-[16px] rounded-[12px]"
+            className="w-full mt-[16px] flex items-center grid grid-template-columns gap-4 py-[8px] px-[16px] rounded-[12px]"
             style={{ backgroundColor: "rgba(103, 101, 113, 0.34)" }}
           >
-            {movies?.slice(0, 6)?.map((movie: IMovie) => (
+            {movies?.slice(0, 5)?.map((movie: IMovie) => (
               <CardMovie key={movie?.id} movie={movie} />
             ))}
           </div>

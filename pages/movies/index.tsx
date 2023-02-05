@@ -26,7 +26,7 @@ const Movies = () => {
         Find the best movies collections all in one place
       </p>
 
-      <div className="w-full mt-[16px] flex items-center grid grid-cols-6 gap-[12px]">
+      <div className="w-full mt-[16px] flex items-center grid gap-[12px] grid-template-columns">
         {movies?.map((movie: IMovie) => (
           <CardMovie key={movie?.id} movie={movie} />
         ))}
