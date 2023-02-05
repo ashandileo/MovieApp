@@ -1,6 +1,8 @@
 import { useState } from "react";
 
 import "../styles/globals.scss";
+import "react-lazy-load-image-component/src/effects/blur.css";
+
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import Header from "../components/Header";

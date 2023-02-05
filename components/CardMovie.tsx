@@ -1,4 +1,5 @@
 import React from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { IMovie } from "../types/MovieTypes";
 
 interface ICardMovie {
@@ -18,10 +19,15 @@ const CardMovie = ({ movie }: ICardMovie) => {
             "linear-gradient(180deg, rgba(29, 29, 29, 0) 0%, #0F1E29 100%)",
         }}
       />
-      <img
+
+      <LazyLoadImage
         src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
-        className="w-full h-full object-cover"
+        width="100%"
+        height="100%"
+        alt={movie?.title}
+        effect="blur"
       />
+
       <div className="content absolute z-[2] bottom-[12px] px-[12px]">
         <p className="text-[18px] font-semibold">{movie?.title}</p>
         <div className="flex items-center justify-between mt-[2px]">
