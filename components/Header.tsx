@@ -18,7 +18,9 @@ const Header = () => {
           <Link href="/about">About</Link>
         </div>
         <div>
-          <Link href="/">GoMovies`</Link>
+          <Link href="/">
+            <a className="text-[24px]">GoMovies`</a>
+          </Link>
         </div>
         <div>
           <p>Search Movies</p>

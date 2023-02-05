@@ -1,9 +1,15 @@
+import { useState } from "react";
+
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import Header from "../components/Header";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [queryClient] = useState(() => new QueryClient());
+
   return (
     <>
       <Head>
@@ -17,8 +23,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Ashandi's XXI</title>
       </Head>
 
-      <Header />
-      <Component {...pageProps} />
+      <QueryClientProvider client={queryClient}>
+        <Header />
+        <Component {...pageProps} />
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </>
   );
 }
