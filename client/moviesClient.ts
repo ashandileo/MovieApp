@@ -7,3 +7,7 @@ export const getPopularMovies = () => {
 export const getTopRatedMovies = (params: Record<string, unknown>) => {
   return client.get("/movie/top_rated", { params });
 };
+
+export const getMovieDetail = (id: number) => {
+  return client.get(`/movie/${id}`);
+};

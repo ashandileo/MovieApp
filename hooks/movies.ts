@@ -1,5 +1,9 @@
 import { useInfiniteQuery, useQuery } from "react-query";
-import { getPopularMovies, getTopRatedMovies } from "../client/moviesClient";
+import {
+  getMovieDetail,
+  getPopularMovies,
+  getTopRatedMovies,
+} from "../client/moviesClient";
 
 export const useGetPopularMovies = () => {
   return useQuery(["popular-movies"], getPopularMovies);
@@ -25,4 +29,8 @@ export const useGetTopRatedMovies = () => {
       },
     }
   );
+};
+
+export const useGetMovieDetail = (id: number) => {
+  return useQuery(["movies", id], () => getMovieDetail(id));
 };
