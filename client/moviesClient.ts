@@ -11,3 +11,7 @@ export const getTopRatedMovies = (params: Record<string, unknown>) => {
 export const getMovieDetail = (id: number) => {
   return client.get(`/movie/${id}`);
 };
+
+export const getLatestMovie = () => {
+  return client.get("/movie/latest");
+};

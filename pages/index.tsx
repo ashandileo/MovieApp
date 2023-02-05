@@ -1,27 +1,44 @@
 import CardMovie from "../components/CardMovie";
 import Link from "next/link";
 import { IMovie } from "../types/MovieTypes";
-import { useGetPopularMovies } from "./../hooks/movies";
+import { useGetMovieDetail, useGetPopularMovies } from "./../hooks/movies";
+import { useMemo } from "react";
+import { dummyMovieIds } from "../consts/moviesConsts";
+
+const randomInteger = (min: number, max: number) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
 
 export default function Home() {
   const { data } = useGetPopularMovies();
 
   const movies = data?.data?.results || [];
 
+  const randomMovieIndex = useMemo(() => randomInteger(0, 100), []);
+  const randomMovieId = dummyMovieIds[randomMovieIndex];
+
+  const { data: movieHero } = useGetMovieDetail(randomMovieId);
+
   return (
-    <div className="background-image">
+    <div
+      className="background-image overflow-hidden"
+      style={{
+        backgroundImage: `url(https://image.tmdb.org/t/p/original${movieHero?.data?.backdrop_path})`,
+      }}
+    >
       <div className="container pt-[140px] relative z-[2]">
         <div className="text-white">
           <div className="leading-[70px]">
-            <h1 className="text-[90px] font-bold">GODZILLA</h1>
-            <h1 className="text-[40px] font-bold">KING OF THE MONSTERS</h1>
+            <h1 className="text-[90px] font-bold">{movieHero?.data?.title}</h1>
+            <h1 className="text-[40px] font-bold">
+              {movieHero?.data?.tagline}
+            </h1>
           </div>
-          <p className="mt-[12px] text-[18px]">
-            It is a long established fact that a reader will be distracted by
-            the readable content <br /> of a page when looking at its layout.
-            The point of using Lorem Ipsum is that it has <br /> a more-or-less
-            normal distribution of letters.
-          </p>
+          <div className="line-clamp-2">
+            <p className="mt-[12px] text-[18px] w-[55%]">
+              {movieHero?.data?.overview}
+            </p>
+          </div>
           <div className="flex items-center gap-[6px] mt-[24px]">
             <img src="/img/filled-star.png" />
             <img src="/img/filled-star.png" />
