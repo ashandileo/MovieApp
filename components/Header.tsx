@@ -13,16 +13,29 @@ const Header = () => {
     >
       <div className="container flex items-center justify-between text-white">
         <div className="flex items-center gap-[40px]">
-          <Link href="/">Home</Link>
-          <Link href="/movies" data-cy="header-movies">
+          <Link
+            href="/"
+            className={`link ${router.pathname === "/" ? "active" : ""}`}
+          >
+            Home
+          </Link>
+          <Link
+            href="/movies"
+            data-cy="header-movies"
+            className={`link ${router.pathname === "/movies" ? "active" : ""}`}
+          >
             Movies
           </Link>
-          <Link href="/about" data-cy="header-about">
+          <Link
+            href="/about"
+            data-cy="header-about"
+            className={`link ${router.pathname === "/about" ? "active" : ""}`}
+          >
             About
           </Link>
         </div>
         <div>
-          <Link href="/" className="text-[24px]">
+          <Link href="/" className="text-[24px] font-bold">
             GoMovies
           </Link>
         </div>

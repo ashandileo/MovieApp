@@ -81,3 +81,33 @@ a {
 .grid-template-columns {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
+
+header {
+  .link {
+    position: relative;
+    font-weight: 500;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: white;
+      bottom: -4px;
+      left: 0;
+      transition: 250ms;
+    }
+
+    &.active {
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
