@@ -22,7 +22,9 @@ const Header = () => {
           <Link
             href="/movies"
             data-cy="header-movies"
-            className={`link ${router.pathname === "/movies" ? "active" : ""}`}
+            className={`link ${
+              router.pathname.includes("/movies") ? "active" : ""
+            }`}
           >
             Movies
           </Link>
