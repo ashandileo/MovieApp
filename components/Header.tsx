@@ -22,9 +22,6 @@ const Header = () => {
             <a className="text-[24px]">GoMovies`</a>
           </Link>
         </div>
-        <div>
-          <p>Search Movies</p>
-        </div>
       </div>
     </header>
   );
