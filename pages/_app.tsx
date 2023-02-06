@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           rel="stylesheet"
         />
 
-        <title>Ashandi's XXI</title>
+        <title>Go Movies</title>
       </Head>
 
       <QueryClientProvider client={queryClient}>
