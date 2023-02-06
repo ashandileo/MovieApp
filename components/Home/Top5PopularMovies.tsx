@@ -7,6 +7,7 @@ import { useGetPopularMovies } from "../../hooks/api/movies";
 const Top5PopularMovies = () => {
   const { data } = useGetPopularMovies();
 
+  // Extract results data
   const movies = data?.data?.results || [];
 
   return (

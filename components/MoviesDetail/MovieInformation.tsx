@@ -1,20 +1,17 @@
 import { useRouter } from "next/router";
 import React from "react";
 import { useQueryClient } from "react-query";
-import { IGenres, IMovie } from "../../types/MovieTypes";
-
-interface IMovieDetail {
-  data: IMovie;
-}
+import { IGenres, IMovieDetailData } from "../../types/MovieTypes";
 
 const MovieInformation = () => {
   const queryClient = useQueryClient();
   const router = useRouter();
 
+  // Get movie detail data
   const movieDetail = queryClient.getQueryData([
     "movies",
     router.query.id,
-  ]) as IMovieDetail;
+  ]) as IMovieDetailData;
 
   return (
     <div

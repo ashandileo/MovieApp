@@ -1,25 +1,23 @@
 import { useRouter } from "next/router";
 import React from "react";
 import { useQueryClient } from "react-query";
-import { IMovie } from "../../types/MovieTypes";
+import { IMovieDetailData } from "../../types/MovieTypes";
 import PDFReport from "../PDFReport";
 import { pdf } from "@react-pdf/renderer";
 import { saveAs } from "file-saver";
 import Button from "../Button";
 
-interface IMovieDetail {
-  data: IMovie;
-}
-
 const Overview = () => {
   const queryClient = useQueryClient();
   const router = useRouter();
 
+  // Get movie detail data
   const movieDetail = queryClient.getQueryData([
     "movies",
     router.query.id,
-  ]) as IMovieDetail;
+  ]) as IMovieDetailData;
 
+  // Function to download movie detail information to pdf
   const downloadPDF = async () => {
     const doc = <PDFReport movies={[movieDetail?.data]} />;
     const asPdf = pdf();

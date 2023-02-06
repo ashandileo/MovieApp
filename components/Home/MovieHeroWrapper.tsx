@@ -10,6 +10,7 @@ interface IMovieHeroWrapper {
 const MovieHeroWrapper = ({ children, movieId }: IMovieHeroWrapper) => {
   const queryClient = useQueryClient();
 
+  // Get query data
   const movieDetail = queryClient.getQueryData([
     "movies",
     movieId,

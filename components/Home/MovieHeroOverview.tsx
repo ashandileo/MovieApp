@@ -12,6 +12,7 @@ const MovieHeroOverview = ({ movieId }: IMovieHeroOverview) => {
   const router = useRouter();
   const queryClient = useQueryClient();
 
+  // Get query data
   const movieDetail = queryClient.getQueryData([
     "movies",
     movieId,

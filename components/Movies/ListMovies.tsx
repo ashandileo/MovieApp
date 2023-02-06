@@ -13,6 +13,7 @@ import useMovies from "../../hooks/useMovies";
 import { shallow } from "zustand/shallow";
 
 const ListMovies = () => {
+  // Consume movies hook state
   const { movies, setMovies } = useMovies(
     (state) => ({ movies: state.movies, setMovies: state.setMovies }),
     shallow
@@ -23,22 +24,25 @@ const ListMovies = () => {
 
   const searchDebounce = useSearch((state) => state.searchDebounce);
 
+  // Get top rated movies
   const {
     data: topRatedMovies,
     hasNextPage: topRatedHasNextPage,
     fetchNextPage: topRatedFetchNextPage,
   } = useGetTopRatedMovies();
 
+  // Search params
   const searchParams = {
     query: searchDebounce,
   };
 
+  // Get search movies
   const {
     data: searchMovies,
     hasNextPage: searchMoviesHasNextPage,
     fetchNextPage: searchMoviesFetchNextPage,
   } = useGetSearchMovies(searchParams, {
-    enabled: !isEmpty(searchDebounce),
+    enabled: !isEmpty(searchDebounce), // only enabled if search debounce is not empty
   });
 
   const data = isEmpty(searchDebounce) ? topRatedMovies : searchMovies;
@@ -53,11 +57,11 @@ const ListMovies = () => {
 
   useEffect(() => {
     const results = data?.pages?.flatMap((page) => page?.data?.results) || [];
-
     setMovies(results);
   }, [data]);
 
   useEffect(() => {
+    // fetch next page if the last movie is visible on screen
     if (isVisible && hasNextPage) {
       fetchNextPage();
     }

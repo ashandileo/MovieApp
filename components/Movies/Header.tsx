@@ -10,6 +10,7 @@ import { pdf } from "@react-pdf/renderer";
 import { saveAs } from "file-saver";
 
 const Header = () => {
+  // Consume search hooks
   const { search, setSearch, setDebounceSearch } = useSearch(
     (state) => ({
       search: state.search,
@@ -19,11 +20,13 @@ const Header = () => {
     shallow
   );
 
+  // Consume movies hooks state
   const movies = useMovies((state) => state.movies);
-  console.log("movies", movies);
 
+  // Seach debounce
   const [searchDebounce] = useDebounce(search, 250);
 
+  // Function to print rendered lists movies
   const printLists = async () => {
     const doc = <PDFReport movies={movies} />;
     const asPdf = pdf();
