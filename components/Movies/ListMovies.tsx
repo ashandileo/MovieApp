@@ -5,14 +5,13 @@ import { IMovie } from "../../types/MovieTypes";
 import CardMovie from "../CardMovie";
 import { useIntersectionObserver } from "react-intersection-observer-hook";
 import { useGetSearchMovies, useGetTopRatedMovies } from "../../hooks/movies";
+import useSearch from "../../hooks/useSearch";
 
-interface IListMovies {
-  searchDebounce: string;
-}
-
-const ListMovies = ({ searchDebounce }: IListMovies) => {
+const ListMovies = () => {
   const [ref, { entry }] = useIntersectionObserver();
   const isVisible = entry && entry.isIntersecting;
+
+  const searchDebounce = useSearch((state) => state.searchDebounce);
 
   const {
     data: topRatedMovies,
