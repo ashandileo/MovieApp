@@ -30,6 +30,7 @@ const ListMovies = () => {
     hasNextPage: topRatedHasNextPage,
     fetchNextPage: topRatedFetchNextPage,
     isFetching: isFetchingTopRated,
+    isFetchingNextPage: isFetchingNextTopRated,
   } = useGetTopRatedMovies();
 
   // Search params
@@ -43,11 +44,14 @@ const ListMovies = () => {
     hasNextPage: searchMoviesHasNextPage,
     fetchNextPage: searchMoviesFetchNextPage,
     isFetching: isFetchingSearchMovies,
+    isFetchingNextPage: isFetchingNextSearchMovies,
   } = useGetSearchMovies(searchParams, {
     enabled: !isEmpty(searchDebounce), // only enabled if search debounce is not empty
   });
 
   const isFetching = isFetchingTopRated || isFetchingSearchMovies;
+  const isFetchingNextPage =
+    isFetchingNextTopRated || isFetchingNextSearchMovies;
 
   const data = isEmpty(searchDebounce) ? topRatedMovies : searchMovies;
 
@@ -73,7 +77,7 @@ const ListMovies = () => {
 
   return (
     <div className="w-full mt-[16px] flex items-center grid gap-[12px] grid-template-columns">
-      {isFetching ? (
+      {isFetching && !isFetchingNextPage ? (
         <div className="mt-[20px]">
           <p>Fetching..</p>
         </div>
