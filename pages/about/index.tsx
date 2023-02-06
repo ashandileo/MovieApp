@@ -36,6 +36,17 @@ const About = () => {
           <li>The Movie Database (TMDb) API</li>
           <li>Axios</li>
         </ul>
+
+        <p className="mt-[20px]">
+          GitHub Repository{" "}
+          <a
+            className="text-sky-500"
+            href="https://github.com/ashandileo/MovieApp"
+            target="__blank"
+          >
+            https://github.com/ashandileo/MovieApp
+          </a>
+        </p>
       </div>
     </AnimatePage>
   );
