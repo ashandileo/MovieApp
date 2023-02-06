@@ -29,6 +29,7 @@ const ListMovies = () => {
     data: topRatedMovies,
     hasNextPage: topRatedHasNextPage,
     fetchNextPage: topRatedFetchNextPage,
+    isFetching: isFetchingTopRated,
   } = useGetTopRatedMovies();
 
   // Search params
@@ -41,9 +42,12 @@ const ListMovies = () => {
     data: searchMovies,
     hasNextPage: searchMoviesHasNextPage,
     fetchNextPage: searchMoviesFetchNextPage,
+    isFetching: isFetchingSearchMovies,
   } = useGetSearchMovies(searchParams, {
     enabled: !isEmpty(searchDebounce), // only enabled if search debounce is not empty
   });
+
+  const isFetching = isFetchingTopRated || isFetchingSearchMovies;
 
   const data = isEmpty(searchDebounce) ? topRatedMovies : searchMovies;
 
@@ -69,28 +73,38 @@ const ListMovies = () => {
 
   return (
     <div className="w-full mt-[16px] flex items-center grid gap-[12px] grid-template-columns">
-      {movies?.map((movie: IMovie, index: number) => {
-        const isLastMovie = movies?.length - 1 === index;
+      {isFetching ? (
+        <div className="mt-[20px]">
+          <p>Fetching..</p>
+        </div>
+      ) : movies?.length > 0 ? (
+        movies?.map((movie: IMovie, index: number) => {
+          const isLastMovie = movies?.length - 1 === index;
 
-        return (
-          <Link
-            href={`/movies/${movie?.id}`}
-            as={`/movies/${movie?.id}`}
-            key={movie?.id}
-            data-cy="movie-item"
-          >
-            <div ref={isLastMovie ? ref : null}>
-              <CardMovie
-                title={movie?.title}
-                image={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
-                releaseDate={movie?.release_date}
-                voteAverage={movie?.vote_average}
-                description={movie?.overview}
-              />
-            </div>
-          </Link>
-        );
-      })}
+          return (
+            <Link
+              href={`/movies/${movie?.id}`}
+              as={`/movies/${movie?.id}`}
+              key={movie?.id}
+              data-cy="movie-item"
+            >
+              <div ref={isLastMovie ? ref : null}>
+                <CardMovie
+                  title={movie?.title}
+                  image={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
+                  releaseDate={movie?.release_date}
+                  voteAverage={movie?.vote_average}
+                  description={movie?.overview}
+                />
+              </div>
+            </Link>
+          );
+        })
+      ) : (
+        <div className="mt-[20px]">
+          <p>No Data Found :(</p>
+        </div>
+      )}
     </div>
   );
 };
