@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const client = axios.create({
-  baseURL: "https://api.themoviedb.org/3",
+  baseURL: process.env.API_HOST,
   headers: {
     Accept: "application/json",
   },
@@ -9,7 +9,7 @@ const client = axios.create({
 
 client.interceptors.request.use((config) => {
   config.params = config.params || {};
-  config.params["api_key"] = "cf6b012a8f4aa1d8f965f77016661aca";
+  config.params["api_key"] = process.env.API_KEY;
   return config;
 });
 
