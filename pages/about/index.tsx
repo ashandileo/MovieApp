@@ -3,6 +3,37 @@ import Head from "next/head";
 import AnimatePage from "../../components/AnimatePage";
 
 const About = () => {
+  const listTech = [
+    {
+      text: "React.js",
+      link: "https://reactjs.org/",
+    },
+    {
+      text: "Next.js",
+      link: "https://nextjs.org/",
+    },
+    {
+      text: "Tailwindcss",
+      link: "https://tailwindcss.com/",
+    },
+    {
+      text: "React Query",
+      link: "https://tanstack.com/query/v3/",
+    },
+    {
+      text: "The Movie Database (TMDb) API",
+      link: "https://www.themoviedb.org/",
+    },
+    {
+      text: "Axios",
+      link: "https://axios-http.com",
+    },
+    {
+      text: "Zustand",
+      link: "https://github.com/pmndrs/zustand",
+    },
+  ];
+
   return (
     <AnimatePage>
       <Head>
@@ -29,12 +60,13 @@ const About = () => {
           List technologies that GoMovies used:
         </p>
         <ul className="list-disc ml-[16px]">
-          <li>React.js</li>
-          <li>Next.js</li>
-          <li>Tailwindcss</li>
-          <li>React Query</li>
-          <li>The Movie Database (TMDb) API</li>
-          <li>Axios</li>
+          {listTech.map((tech) => (
+            <li>
+              <a href={tech.link} target="__blank">
+                {tech.text}
+              </a>
+            </li>
+          ))}
         </ul>
 
         <p className="mt-[20px]">
