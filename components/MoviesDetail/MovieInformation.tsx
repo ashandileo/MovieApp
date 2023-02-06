@@ -17,7 +17,10 @@ const MovieInformation = () => {
   ]) as IMovieDetail;
 
   return (
-    <div className="absolute left-[370px] bottom-[22px]">
+    <div
+      className="absolute left-[370px] bottom-[22px]"
+      data-cy="movie-detail-content"
+    >
       <p className="text-[32px] font-semibold">{movieDetail?.data?.title}</p>
       <p>Tagline: {movieDetail?.data?.tagline || "-"}</p>
       <p>Language: {movieDetail?.data?.original_language}</p>

@@ -16,8 +16,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         defaultOptions: {
           queries: {
             refetchOnWindowFocus: false,
-            cacheTime: 5 * 60 * 1000,
-            staleTime: 5 * 60 * 1000,
+            cacheTime: 5 * 60 * 1000, // 5 minutes
+            staleTime: 5 * 60 * 1000, // 5 minutes
           },
         },
       })

@@ -8,7 +8,7 @@ const About = () => {
       <Head>
         <title>GoMovies | About</title>
       </Head>
-      <div className="container text-white pt-[200px]">
+      <div className="container text-white pt-[200px]" data-cy="about-content">
         <p className="text-[32px] font-semibold">Welcome to GoMovies</p>
         <p className="mt-[20px]">
           GoMovies is a movie application that provides users with information

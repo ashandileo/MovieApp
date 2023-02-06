@@ -14,8 +14,12 @@ const Header = () => {
       <div className="container flex items-center justify-between text-white">
         <div className="flex items-center gap-[40px]">
           <Link href="/">Home</Link>
-          <Link href="/movies">Movies</Link>
-          <Link href="/about">About</Link>
+          <Link href="/movies" data-cy="header-movies">
+            Movies
+          </Link>
+          <Link href="/about" data-cy="header-about">
+            About
+          </Link>
         </div>
         <div>
           <Link href="/" className="text-[24px]">

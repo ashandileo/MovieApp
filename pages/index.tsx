@@ -7,6 +7,7 @@ import MovieHeroOverview from "../components/Home/MovieHeroOverview";
 import Top5PopularMovies from "../components/Home/Top5PopularMovies";
 import AnimatePage from "../components/AnimatePage";
 
+// Function to generate random number
 const randomInteger = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
@@ -15,6 +16,7 @@ export default function Home() {
   const randomMovieIndex = useMemo(() => randomInteger(0, 100), []);
   const randomMovieId = dummyMovieIds[randomMovieIndex];
 
+  // Get movie detail on mount
   useGetMovieDetail(randomMovieId);
 
   return (

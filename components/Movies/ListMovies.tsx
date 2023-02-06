@@ -73,6 +73,7 @@ const ListMovies = () => {
             href={`/movies/${movie?.id}`}
             as={`/movies/${movie?.id}`}
             key={movie?.id}
+            data-cy="movie-item"
           >
             <div ref={isLastMovie ? ref : null}>
               <CardMovie

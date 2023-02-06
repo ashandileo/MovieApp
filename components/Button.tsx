@@ -5,9 +5,10 @@ interface IButton {
   children: React.ReactNode;
   onClick?: (e: React.MouseEvent) => void;
   customClass?: string;
+  dataCy?: string;
 }
 
-const Button = ({ children, onClick, customClass }: IButton) => {
+const Button = ({ children, onClick, customClass, dataCy }: IButton) => {
   const buttonCN = ctl(`
     rounded-full
     bg-[#64B6D0]
@@ -20,7 +21,7 @@ const Button = ({ children, onClick, customClass }: IButton) => {
   `);
 
   return (
-    <button className={buttonCN} onClick={onClick}>
+    <button className={buttonCN} onClick={onClick} data-cy={dataCy}>
       {children}
     </button>
   );

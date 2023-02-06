@@ -20,11 +20,18 @@ const MovieHeroOverview = ({ movieId }: IMovieHeroOverview) => {
   return (
     <div className="text-white">
       <div className="leading-[70px]">
-        <h1 className="text-[90px] font-bold">{movieDetail?.data?.title}</h1>
-        <h1 className="text-[40px] font-bold">{movieDetail?.data?.tagline}</h1>
+        <h1 data-cy="movie-hero-title" className="text-[90px] font-bold">
+          {movieDetail?.data?.title}
+        </h1>
+        <h1 data-cy="movie-hero-tagline" className="text-[40px] font-bold">
+          {movieDetail?.data?.tagline}
+        </h1>
       </div>
       <div className="line-clamp-2">
-        <p className="mt-[12px] text-[18px] w-[55%]">
+        <p
+          className="mt-[12px] text-[18px] w-[55%]"
+          data-cy="movie-hero-overview"
+        >
           {movieDetail?.data?.overview}
         </p>
       </div>
@@ -36,7 +43,10 @@ const MovieHeroOverview = ({ movieId }: IMovieHeroOverview) => {
         <img src="/img/outlined-star.png" />
       </div>
       <div className="flex items-center mt-[24px]">
-        <Button onClick={() => router.push(`/movies/${movieDetail?.data?.id}`)}>
+        <Button
+          onClick={() => router.push(`/movies/${movieDetail?.data?.id}`)}
+          dataCy="movie-hero-see-detail"
+        >
           See Detail
         </Button>
       </div>
