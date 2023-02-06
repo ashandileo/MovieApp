@@ -19,7 +19,7 @@ const Header = () => {
         </div>
         <div>
           <Link href="/">
-            <a className="text-[24px]">GoMovies`</a>
+            <a className="text-[24px]">GoMovies</a>
           </Link>
         </div>
       </div>
