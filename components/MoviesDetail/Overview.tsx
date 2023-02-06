@@ -25,7 +25,7 @@ const Overview = () => {
     const asPdf = pdf();
     asPdf.updateContainer(doc);
     const blob = await asPdf.toBlob();
-    saveAs(blob, "document.pdf");
+    saveAs(blob, `${movieDetail?.data?.title}.pdf`);
   };
 
   return (
