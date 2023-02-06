@@ -5,12 +5,16 @@ import { IMovie } from "../types/MovieTypes";
 import { useGetMovieDetail, useGetPopularMovies } from "./../hooks/movies";
 import { useMemo } from "react";
 import { dummyMovieIds } from "../consts/moviesConsts";
+import Button from "../components/Button";
+import { useRouter } from "next/router";
 
 const randomInteger = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
 export default function Home() {
+  const router = useRouter();
+
   const { data } = useGetPopularMovies();
 
   const movies = data?.data?.results || [];
@@ -54,15 +58,11 @@ export default function Home() {
               <img src="/img/outlined-star.png" />
             </div>
             <div className="flex items-center mt-[24px]">
-              <Link
-                href={`/movies/${movieHero?.data?.id}`}
-                as={`/movies/${movieHero?.data?.id}`}
-                key={movieHero?.data?.id}
+              <Button
+                onClick={() => router.push(`/movies/${movieHero?.data?.id}`)}
               >
-                <a className="rounded-full bg-[#64B6D0] hover:bg-[#0da0cf] duration-150 py-[8px] px-[16px] font-bold">
-                  See Detail
-                </a>
-              </Link>
+                See Detail
+              </Button>
             </div>
           </div>
 

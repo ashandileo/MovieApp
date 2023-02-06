@@ -5,6 +5,7 @@ import { IMovie } from "../../types/MovieTypes";
 import PDFReport from "../PDFReport";
 import { pdf } from "@react-pdf/renderer";
 import { saveAs } from "file-saver";
+import Button from "../Button";
 
 interface IMovieDetail {
   data: IMovie;
@@ -31,12 +32,9 @@ const Overview = () => {
     <div className="absolute w-[60%] left-[370px] mt-[12px]">
       <p className="text-[22px] font-semibold">Overview</p>
       <p>{movieDetail?.data?.overview}</p>
-      <button
-        className="rounded-full bg-[#64B6D0] hover:bg-[#0da0cf] duration-150 py-[8px] px-[16px] font-bold mt-[16px]"
-        onClick={downloadPDF}
-      >
+      <Button onClick={downloadPDF} customClass="mt-[16px]">
         Print
-      </button>
+      </Button>
     </div>
   );
 };
