@@ -32,7 +32,9 @@ const MovieDetail = ({ movieId }: IMovieDetail) => {
           <Overview />
         </div>
 
-        <ProductionCompanies />
+        {movieDetail?.production_companies?.length > 0 && (
+          <ProductionCompanies />
+        )}
       </div>
     </AnimatePage>
   );
