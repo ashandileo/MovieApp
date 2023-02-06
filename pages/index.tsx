@@ -2,9 +2,9 @@ import Head from "next/head";
 import { useGetMovieDetail } from "./../hooks/movies";
 import { useMemo } from "react";
 import { dummyMovieIds } from "../consts/moviesConsts";
-import MovieHeroWrapper from "../components/Movies/MovieHeroWrapper";
-import MovieHeroOverview from "../components/Movies/MovieHeroOverview";
-import Top5PopularMovies from "../components/Movies/Top5PopularMovies";
+import MovieHeroWrapper from "../components/Home/MovieHeroWrapper";
+import MovieHeroOverview from "../components/Home/MovieHeroOverview";
+import Top5PopularMovies from "../components/Home/Top5PopularMovies";
 
 const randomInteger = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
