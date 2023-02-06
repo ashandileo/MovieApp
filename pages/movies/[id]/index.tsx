@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import { useGetMovieDetail } from "../../../hooks/movies";
+import { useGetMovieDetail } from "../../../hooks/api/movies";
 import Backdrop from "../../../components/MoviesDetail/Backdrop";
 import MovieInformation from "../../../components/MoviesDetail/MovieInformation";
 import Poster from "../../../components/MoviesDetail/Poster";

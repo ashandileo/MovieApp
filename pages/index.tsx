@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useGetMovieDetail } from "./../hooks/movies";
+import { useGetMovieDetail } from "../hooks/api/movies";
 import { useMemo } from "react";
 import { dummyMovieIds } from "../consts/moviesConsts";
 import MovieHeroWrapper from "../components/Home/MovieHeroWrapper";

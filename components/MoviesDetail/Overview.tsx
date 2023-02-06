@@ -21,7 +21,7 @@ const Overview = () => {
   ]) as IMovieDetail;
 
   const downloadPDF = async () => {
-    const doc = <PDFReport movieDetail={movieDetail?.data} />;
+    const doc = <PDFReport movies={[movieDetail?.data]} />;
     const asPdf = pdf();
     asPdf.updateContainer(doc);
     const blob = await asPdf.toBlob();

@@ -8,7 +8,7 @@ import {
   getPopularMovies,
   getSearchMovies,
   getTopRatedMovies,
-} from "../client/moviesClient";
+} from "../../client/moviesClient";
 
 export const useGetPopularMovies = () => {
   return useQuery(["popular-movies"], getPopularMovies);

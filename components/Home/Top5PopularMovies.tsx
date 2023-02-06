@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import CardMovie from "../CardMovie";
 import { IMovie } from "../../types/MovieTypes";
-import { useGetPopularMovies } from "../../hooks/movies";
+import { useGetPopularMovies } from "../../hooks/api/movies";
 
 const Top5PopularMovies = () => {
   const { data } = useGetPopularMovies();

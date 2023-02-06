@@ -4,10 +4,20 @@ import isEmpty from "lodash/isEmpty";
 import { IMovie } from "../../types/MovieTypes";
 import CardMovie from "../CardMovie";
 import { useIntersectionObserver } from "react-intersection-observer-hook";
-import { useGetSearchMovies, useGetTopRatedMovies } from "../../hooks/movies";
+import {
+  useGetSearchMovies,
+  useGetTopRatedMovies,
+} from "../../hooks/api/movies";
 import useSearch from "../../hooks/useSearch";
+import useMovies from "../../hooks/useMovies";
+import { shallow } from "zustand/shallow";
 
 const ListMovies = () => {
+  const { movies, setMovies } = useMovies(
+    (state) => ({ movies: state.movies, setMovies: state.setMovies }),
+    shallow
+  );
+
   const [ref, { entry }] = useIntersectionObserver();
   const isVisible = entry && entry.isIntersecting;
 
@@ -41,7 +51,11 @@ const ListMovies = () => {
     ? topRatedFetchNextPage
     : searchMoviesFetchNextPage;
 
-  const movies = data?.pages?.flatMap((page) => page?.data?.results) || [];
+  useEffect(() => {
+    const results = data?.pages?.flatMap((page) => page?.data?.results) || [];
+
+    setMovies(results);
+  }, [data]);
 
   useEffect(() => {
     if (isVisible && hasNextPage) {
