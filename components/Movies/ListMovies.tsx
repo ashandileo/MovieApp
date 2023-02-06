@@ -60,7 +60,7 @@ const ListMovies = () => {
             as={`/movies/${movie?.id}`}
             key={movie?.id}
           >
-            <a ref={isLastMovie ? ref : null}>
+            <div ref={isLastMovie ? ref : null}>
               <CardMovie
                 title={movie?.title}
                 image={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
@@ -68,7 +68,7 @@ const ListMovies = () => {
                 voteAverage={movie?.vote_average}
                 description={movie?.overview}
               />
-            </a>
+            </div>
           </Link>
         );
       })}

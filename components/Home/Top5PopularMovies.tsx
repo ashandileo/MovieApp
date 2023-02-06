@@ -22,15 +22,13 @@ const Top5PopularMovies = () => {
             as={`/movies/${movie?.id}`}
             key={movie?.id}
           >
-            <a>
-              <CardMovie
-                title={movie?.title}
-                image={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
-                releaseDate={movie?.release_date}
-                voteAverage={movie?.vote_average}
-                description={movie?.overview}
-              />
-            </a>
+            <CardMovie
+              title={movie?.title}
+              image={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
+              releaseDate={movie?.release_date}
+              voteAverage={movie?.vote_average}
+              description={movie?.overview}
+            />
           </Link>
         ))}
       </div>
