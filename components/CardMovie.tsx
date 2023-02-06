@@ -17,7 +17,7 @@ const CardMovie = ({
   description,
 }: ICardMovie) => {
   return (
-    <div className="w-full h-full rounded-[12px] overflow-hidden relative cursor-pointer popular-movies border border-white bg-white">
+    <div className="w-full h-full min-h-[300px] rounded-[12px] overflow-hidden relative cursor-pointer popular-movies border border-white bg-white">
       <div
         className="absolute left-[0px] right-[0px] bottom-[0px] h-[65%]"
         style={{
