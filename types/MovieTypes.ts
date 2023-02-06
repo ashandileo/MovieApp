@@ -30,3 +30,7 @@ export interface IMovie {
   backdrop_path?: string;
   production_companies?: IProductionCompanies[];
 }
+
+export interface IMovieDetailData {
+  data: IMovie;
+}
