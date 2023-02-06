@@ -3,6 +3,13 @@ export interface IGenres {
   name: string;
 }
 
+interface IProductionCompanies {
+  id: number;
+  logo_path?: string;
+  name: string;
+  origin_country: string;
+}
+
 export interface IMovie {
   id: number;
   adult: boolean;
@@ -20,4 +27,6 @@ export interface IMovie {
   genres?: IGenres[];
   tagline?: string;
   runtime?: number;
+  backdrop_path?: string;
+  production_companies?: IProductionCompanies[];
 }
