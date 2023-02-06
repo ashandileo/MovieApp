@@ -22,7 +22,7 @@ const ProductionCompanies = () => {
       <div className="w-full mt-[16px] flex items-center gap-[12px] flex-wrap">
         {movieDetail?.data?.production_companies?.map((company: any) => (
           <div className="text-center">
-            <div className="w-[200px] h-[300px] bg-white rounded-[12px] overflow-hidden">
+            <div className="w-[200px] h-[300px] bg-white rounded-[12px] overflow-hidden border border-white px-[12px]">
               {company?.logo_path ? (
                 <img
                   src={`https://image.tmdb.org/t/p/original${company?.logo_path}`}

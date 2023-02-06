@@ -33,7 +33,7 @@ const Overview = () => {
       <p className="text-[22px] font-semibold">Overview</p>
       <p>{movieDetail?.data?.overview}</p>
       <Button onClick={downloadPDF} customClass="mt-[16px]">
-        Print
+        Print {movieDetail?.data?.title}
       </Button>
     </div>
   );
