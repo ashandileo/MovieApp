@@ -3,10 +3,11 @@ import Head from "next/head";
 
 import Header from "../../components/Movies/Header";
 import ListMovies from "../../components/Movies/ListMovies";
+import AnimatePage from "../../components/AnimatePage";
 
 const Movies = () => {
   return (
-    <>
+    <AnimatePage>
       <Head>
         <title>Go Movies | Explore Movies</title>
       </Head>
@@ -14,7 +15,7 @@ const Movies = () => {
         <Header />
         <ListMovies />
       </div>
-    </>
+    </AnimatePage>
   );
 };
 

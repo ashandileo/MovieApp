@@ -5,6 +5,7 @@ import { dummyMovieIds } from "../consts/moviesConsts";
 import MovieHeroWrapper from "../components/Home/MovieHeroWrapper";
 import MovieHeroOverview from "../components/Home/MovieHeroOverview";
 import Top5PopularMovies from "../components/Home/Top5PopularMovies";
+import AnimatePage from "../components/AnimatePage";
 
 const randomInteger = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -17,7 +18,7 @@ export default function Home() {
   useGetMovieDetail(randomMovieId);
 
   return (
-    <>
+    <AnimatePage>
       <Head>
         <title>Go Movies | Home</title>
       </Head>
@@ -27,6 +28,6 @@ export default function Home() {
           <Top5PopularMovies />
         </div>
       </MovieHeroWrapper>
-    </>
+    </AnimatePage>
   );
 }

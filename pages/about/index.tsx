@@ -1,9 +1,10 @@
 import React from "react";
 import Head from "next/head";
+import AnimatePage from "../../components/AnimatePage";
 
 const About = () => {
   return (
-    <>
+    <AnimatePage>
       <Head>
         <title>GoMovies | About</title>
       </Head>
@@ -36,7 +37,7 @@ const About = () => {
           <li>Axios</li>
         </ul>
       </div>
-    </>
+    </AnimatePage>
   );
 };
 

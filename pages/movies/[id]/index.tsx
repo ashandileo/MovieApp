@@ -6,6 +6,7 @@ import MovieInformation from "../../../components/MoviesDetail/MovieInformation"
 import Poster from "../../../components/MoviesDetail/Poster";
 import Overview from "../../../components/MoviesDetail/Overview";
 import ProductionCompanies from "../../../components/MoviesDetail/ProductionCompanies";
+import AnimatePage from "../../../components/AnimatePage";
 
 interface IMovieDetail {
   movieId: number;
@@ -17,7 +18,7 @@ const MovieDetail = ({ movieId }: IMovieDetail) => {
   const movieDetail = data?.data;
 
   return (
-    <>
+    <AnimatePage>
       <Head>
         <title>Go Movies | {movieDetail?.title}</title>
       </Head>
@@ -33,7 +34,7 @@ const MovieDetail = ({ movieId }: IMovieDetail) => {
 
         <ProductionCompanies />
       </div>
-    </>
+    </AnimatePage>
   );
 };
 
